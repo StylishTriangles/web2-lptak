@@ -1,8 +1,11 @@
+body {
+    background-color: black;
+}
 h1 {
     color: crimson;
-    font-family: sans-serif;
-    font: "Comic Sans MS";
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 p {
     color: aquamarine;
+    font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
