@@ -1,3 +1,4 @@
 function hello() {
-    console.log("Hello World!");    
+    let x = "doggo";
+    console.log("Hello "+x+"!");
 }
