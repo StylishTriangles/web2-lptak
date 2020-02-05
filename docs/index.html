@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>The Webpage II</h1>
-    <img id="ksp" src="img/ksp.jpg" alt="Kerbal Space Program" hidden/>
-    <p id="greeting" hidden>Hello Mr. Kerbal</p>
+    <img id="ksp" src="img/ksp.jpg" alt="Kerbal Space Program" onload="enable_movement(); see_image();" onclick="click_image()" hidden/>
+    <p id="greeting" hidden>Hello Mr. Kerbal, your score is: <a id="score">0</a></p>
     <button id="show_btn" onclick="see_image()">Click for a surprise</button>
     <button id="hide_btn" onclick="hide_image()" hidden>No more!</button>
+    <div id = "log"></div>
 </body>
 </html>

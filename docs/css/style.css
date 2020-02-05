@@ -9,3 +9,13 @@ p {
     color: aquamarine;
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
+
+#ksp {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+
+#log {
+    color: whitesmoke;
+}
