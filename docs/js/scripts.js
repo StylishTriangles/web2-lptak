@@ -3,29 +3,24 @@ function hello() {
     console.log("Hello "+x+"!");
 }
 
-let imageX = 200;
-let imageY = 200;
-let imageScore = 0;
+let imageX = 400;
+let imageY = 400;
+let mouseX = 0;
+let mouseY = 0;
 
 function logdiv(message) {
     let div = document.getElementById("log");
-    div.innerHTML += message + "<br/>";
+    div.innerHTML = message;
 }
-
-function update_score() {
-    let score = document.getElementById("score");
-    score.innerHTML=imageScore;
-}
-
 function move_image() {
     img = document.getElementById("ksp");
     // imageX = Math.random()*400;
     // imageY = Math.random()*400;
-    let newStyle = "left: " + (imageX+imageScore) + "px; top: " + imageY + "px;";
-    img.style = newStyle;
+    let newStyle = "left: " + imageX + "px; top: " + imageY + "px;";
+    // img.style = newStyle;
+    img.style.left = imageX + "px";
+    img.style.top = imageY + "px";
     logdiv("👉\t" + newStyle);
-    imageScore -= 1;
-    update_score();
 }
 
 function enable_movement() {
@@ -50,7 +45,46 @@ function hide_image() {
     hide.setAttribute("hidden", null)
 }
 
-function click_image() {
-    imageScore += 1;
-    update_score();
+function clone_image(node, posX, posY) {
+    let clone = node.cloneNode();
+    clone.id = "";
+    clone.style.position = "absolute";
+    let junk = document.getElementById("junk");
+    junk.appendChild(clone);
+}
+
+function create_image_events() {
+    ksp = document.getElementById("ksp");
+    ksp.onmousedown = function (event) {
+        mouseX = event.pageX;
+        mouseY = event.pageY;
+
+        function onMouseMove(event) {
+            let dX = event.pageX - mouseX;
+            let dY = event.pageY - mouseY;
+            // if (dX > 20 || dY > 20) {
+            //     clone_image(ksp, imageX, imageY)
+            // }
+            imageX += dX;
+            imageY += dY;
+
+            mouseX = event.pageX;
+            mouseY = event.pageY;
+
+            
+            move_image();
+        }
+
+        // Add event listener
+        document.addEventListener('mousemove', onMouseMove);
+
+        // Drop the image
+        ksp.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            ksp.onmouseup = null;
+        };
+    };
+    ksp.ondragstart = function() {return false;}
+
+
 }
