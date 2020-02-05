@@ -29,22 +29,28 @@ function enable_movement() {
     setInterval(move_image, 1000);
 }
 
+// ids which will be hidden/shown when pressing buttons
+let hide_ids = ["ksp", "greeting", "hide_btn", "log"];
+
+function hide_elem(id) {
+    elem = document.getElementById(id);
+    elem.setAttribute("hidden", null);
+}
+function show_elem(id) {
+    elem = document.getElementById(id);
+    elem.removeAttribute("hidden");
+}
+
 function see_image() {
-    img = document.getElementById("ksp");
-    img.removeAttribute("hidden")
-    greeting = document.getElementById("greeting");
-    greeting.removeAttribute("hidden")
-    hide = document.getElementById("hide_btn");
-    hide.removeAttribute("hidden")
+    for (let id of hide_ids) {
+        show_elem(id);
+    }
 }
 
 function hide_image() {
-    img = document.getElementById("ksp");
-    img.setAttribute("hidden", null)
-    greeting = document.getElementById("greeting");
-    greeting.setAttribute("hidden", null)
-    hide = document.getElementById("hide_btn");
-    hide.setAttribute("hidden", null)
+    for (let id of hide_ids) {
+        hide_elem(id);
+    }
 }
 
 function clone_image(node, posX, posY) {
