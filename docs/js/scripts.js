@@ -3,8 +3,8 @@ function hello() {
     console.log("Hello "+x+"!");
 }
 
-let imageX = 400;
-let imageY = 400;
+let imageX = 100;
+let imageY = 300;
 let mouseX = 0;
 let mouseY = 0;
 
@@ -12,7 +12,7 @@ function logdiv(message) {
     let div = document.getElementById("log");
     div.innerHTML = message;
 }
-function move_image() {
+function move_image(quiet = false) {
     img = document.getElementById("ksp");
     // imageX = Math.random()*400;
     // imageY = Math.random()*400;
@@ -20,7 +20,9 @@ function move_image() {
     // img.style = newStyle;
     img.style.left = imageX + "px";
     img.style.top = imageY + "px";
-    logdiv("👉\t" + newStyle);
+    if (!quiet) {
+        logdiv("👉\t" + newStyle);
+    }
 }
 
 function enable_movement() {
@@ -55,6 +57,8 @@ function clone_image(node, posX, posY) {
 
 function create_image_events() {
     ksp = document.getElementById("ksp");
+    // make sure the image is positioned as defined in this file
+    move_image(true);
     ksp.onmousedown = function (event) {
         mouseX = event.pageX;
         mouseY = event.pageY;
