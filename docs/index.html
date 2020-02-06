@@ -4,14 +4,21 @@
     <meta charset="utf-8"/>
     <title>Lukasz's Cool Stuff</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/ksp.css"/>
     <script src="js/scripts.js"></script>
+    <script src="js/ksp.js"></script>
 </head>
 <body>
     <h1>The Webpage II</h1>
-    <img id="ksp" src="img/ksp.jpg" onload="create_image_events()" alt="Kerbal Space Program" hidden/>
+    <img id="Kerbin" src="img/ksp.jpg" class="ksp" onload="register_kerbal('Kerbin', 400, 100)" alt="Kerbal Space Program" hidden/>
+    <img id="Klara" src="img/ksp.jpg" class="ksp" onload="register_kerbal('Klara', 400, 350)" alt="Kerbal Space Program" hidden/>
     <button id="show_btn" onclick="see_image()">Click for a surprise</button>
     <button id="hide_btn" onclick="hide_image()" hidden>No more!</button>
-    <p id="greeting" hidden>Hello Mr. Kerbal! Drag 'n' drop the image!</p>
+    <div id="greeting" hidden>
+        <p>Hello Mr. Kerbal! Drag 'n' drop the images!</p>
+        <p>You have been dragging Kerbin for: <span id="Kerbin-distance">0</span>px!</p>
+        <p>You have been dragging Klara for: <span id="Klara-distance">0</span>px!</p>
+    </div>
     <div id = "log"></div>
     <div id="junk">
         <!-- Here go the clones-->
