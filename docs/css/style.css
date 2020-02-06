@@ -10,10 +10,6 @@ p {
     font-family: Avantgarde, TeX Gyre Adventor, URW Gothic L, sans-serif;
 }
 
-#ksp {
-    position: absolute;
-}
-
 #log {
     color: whitesmoke;
 }
