@@ -1,0 +1,14 @@
+.footer-col {
+    width: 33%;
+}
+
+.username {
+    margin-left: 2px;
+}
+
+.use-fix {
+    /* width: 16px; */
+    box-sizing: unset;
+    margin: 5px;
+    margin-right: 4px;
+}
