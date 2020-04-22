@@ -104,7 +104,8 @@ dist
 .tern-port
 
 # cached files
-.sass-cache/
+.sass-cache
+source/.sass-cache
 
 # VS code config
 .vscode/
