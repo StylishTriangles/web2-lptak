@@ -1,12 +1,15 @@
 <header class="site-header" role="banner">
 
-  <div class="wrapper bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: calc(800px - (30px * 2)); margin-left: auto; margin-right: auto;">
+  <!-- <div class="wrapper bg-light"> -->
     {%- assign default_paths = site.pages | map: "path" -%}
     {%- assign page_paths = site.header_pages | default: default_paths -%}
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="navbar-brand" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
     {%- if page_paths -%}
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
         <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
@@ -17,16 +20,16 @@
           </span>
         </label> -->
 
-          <li class="nav-item">
             {%- for path in page_paths -%}
               {%- assign my_page = site.pages | where: "path", path | first -%}
               {%- if my_page.title -%}
-              <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ my_page.url | relative_url }}">{{ my_page.title | escape }}</a>
+                </li>
               {%- endif -%}
             {%- endfor -%}
-          </li>
       </ul>
-      </nav>
     {%- endif -%}
-  </div>
+  <!-- </div> -->
+  </nav>
 </header>

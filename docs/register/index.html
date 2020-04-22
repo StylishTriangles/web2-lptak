@@ -21,12 +21,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-  <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha512-0QDLUJ0ILnknsQdYYjG7v2j8wERkKufvjBNmng/EdR/s/SE7X8cQ9y0+wMzuQT0lfXQ/NhG+zhmHNOWTUS3kMA==" crossorigin="anonymous"
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" integrity="sha512-0QDLUJ0ILnknsQdYYjG7v2j8wERkKufvjBNmng/EdR/s/SE7X8cQ9y0+wMzuQT0lfXQ/NhG+zhmHNOWTUS3kMA==" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/web2-lptak/feed.xml" title="Lukasz's GoKarts" /></head>
 <body><header class="site-header" role="banner">
 
-  <div class="wrapper bg-light"><a class="site-title" rel="author" href="/web2-lptak/">Lukasz&#39;s GoKarts</a><nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <ul class="navbar-nav">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" style="max-width: calc(800px - (30px * 2)); margin-left: auto; margin-right: auto;">
+  <!-- <div class="wrapper bg-light"> --><a class="navbar-brand" rel="author" href="/web2-lptak/">Lukasz&#39;s GoKarts</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button><ul class="navbar-nav">
         <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -34,11 +38,14 @@
               <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
             </svg>
           </span>
-        </label> -->
-
-          <li class="nav-item"><a class="nav-link" href="/web2-lptak/about/">About</a><a class="nav-link" href="/web2-lptak/register/">Register</a><a class="nav-link" href="/web2-lptak/signin/">Sign in</a></li>
-      </ul>
-      </nav></div>
+        </label> --><li class="nav-item">
+                  <a class="nav-link" href="/web2-lptak/about/">About</a>
+                </li><li class="nav-item">
+                  <a class="nav-link" href="/web2-lptak/register/">Register</a>
+                </li><li class="nav-item">
+                  <a class="nav-link" href="/web2-lptak/signin/">Sign in</a>
+                </li></ul><!-- </div> -->
+  </nav>
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
@@ -59,36 +66,35 @@
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
         <input name="full_name" class="form-control" placeholder="Full name" type="text" required="" />
-        <div class="invalid-feedback">Please fill out your full name.</div>
+        <div class="invalid-feedback"></div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
         <input name="email" class="form-control" placeholder="Email address" type="email" required="" />
-        <div class="invalid-feedback">
-          Please provide a valid email address.
-        </div>
+        <div class="invalid-feedback"></div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-    	<input name="phone" class="form-control" placeholder="Phone number (optional)" type="text" />
+    	<input name="phone" class="form-control" placeholder="Phone number (optional)" type="tel" />
+        <div class="invalid-feedback"></div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
         <input id="password" name="password" class="form-control" placeholder="Create password" type="password" required="" />
-        <div class="invalid-feedback">Password must have at least 8 characters.</div>
+        <div class="invalid-feedback"></div>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
         <input name="password_repeat" class="form-control" placeholder="Repeat password" type="password" required="" />
-        <div class="invalid-feedback">Please fill out this field.</div>
+        <div class="invalid-feedback"></div>
     </div> <!-- form-group// -->                                      
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
