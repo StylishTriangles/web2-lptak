@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Register
-permalink: /register/
+title: Sign up
+permalink: /sign_up/
 ---
 
 <div class="card bg-light">
