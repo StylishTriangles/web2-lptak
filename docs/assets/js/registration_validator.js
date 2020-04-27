@@ -1,4 +1,19 @@
 
+function serializeJSON( form ) {
+    var obj = {};
+    var elements = form.querySelectorAll( "input, select, textarea" );
+    for( var i = 0; i < elements.length; ++i ) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if( name ) {
+            obj[ name ] = value;
+        }
+    }
+    return obj;
+}
+
 $(function() {
     let form = $("form.needs-validation");
 
@@ -35,7 +50,6 @@ $(function() {
             }
         },
         errorPlacement: function(error, element) {
-            console.log($(error).text(), element);
             $(element).siblings(".invalid-feedback").text($(error).text());
         },
         highlight: function(element) {
@@ -44,9 +58,11 @@ $(function() {
         unhighlight: function(element) {
             $(element).addClass("is-valid").removeClass("is-invalid");
         },
-        submitHandler: function(form) {
+        submitHandler: function(submitted_form) {
             // Here we would want an AJAX submit
-            console.log(form);
+            var obj = serializeJSON(submitted_form);
+            Cookies.set("user", obj);
+            alert("You have successfully registered!");
         }
     });
 });
