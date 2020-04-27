@@ -13,6 +13,14 @@ permalink: /reservations/
                 <div class='input-group date' id='datetimepicker'>
                     <input type='date' class="form-control datepicker" onchange="date_changed(event);"/>
                 </div>
+                <div class='input-group' id="signed_in">
+                    <p>Select the time of your reservation</p>
+                    <input id="time_choice" type='time' class="form-control" min='10:00' max='21:30' step="00:30"/>
+                    <button class="btn btn-primary btn-block" onclick="reserve();">Make Reservation</button>
+                </div>
+                <div class='input-group' id="signed_out">
+                    <p>Please sign in to view reservation form</p>
+                </div>
             </div>
             <!-- <div id="signed_in" hidden>
             </div> -->
@@ -45,6 +53,8 @@ var minute_end = 30;
 
 var step = 30; // minutes
 
+var date;
+
 $(function(){
     if (Cookies.get("auth") === "1") {
         show_signed_in();
@@ -53,8 +63,23 @@ $(function(){
     }
 });
 
+$(function() {
+    let e = {};
+    e.target = {};
+    e.target.value = "2020-04-09";
+    refresh_event_list("2020-04-09");
+});
+
 function get_reservations(date) {
     let obj = Cookies.get(date);
+    if (obj === undefined) {
+        obj= "{}";
+    }
+    return JSON.parse(obj);
+}
+
+function get_user() {
+    let obj = Cookies.get("user");
     if (obj === undefined) {
         obj= "{}";
     }
@@ -71,6 +96,20 @@ function show_signed_out() {
     $("#signed_in").attr("hidden", "");
 }
 
+function reserve() {
+    let usr = get_user();
+    let name = usr["full_name"];
+    let selected_time = $("#time_choice").val();
+    if(!selected_time) {
+        alert("Please select the time of your reservation", selected_time);
+        return;
+    }
+    let res = get_reservations(date.toString());
+    res[selected_time] = name;
+    Cookies.set(date.toString(), res);
+    refresh_event_list(date);
+}
+
 function format_date(hour, minute) {
     ret = "";
     if (hour < 10)
@@ -84,6 +123,8 @@ function format_date(hour, minute) {
 }
 
 function refresh_event_list(date) {
+    // $("#display_date").text(new_date);
+
     $("#times_body").empty();
     let reservations = get_reservations(date);
     for (i = hour_start*60+minute_start; i <= hour_end*60+minute_end; i+= step) {
@@ -109,6 +150,7 @@ function refresh_event_list(date) {
 function date_changed(event) {
     var new_date = event.target.value;
     $("#display_date").text(new_date);
+    date = new_date
     refresh_event_list(new_date);
 }
 </script>
