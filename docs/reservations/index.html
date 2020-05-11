@@ -66,11 +66,11 @@
             <p>Select date</p>
             <div class="form-group">
                 <div class="input-group date" id="datetimepicker">
-                    <input type="date" class="form-control datepicker" onchange="date_changed(event);" />
+                    <input id="date_choice" type="date" class="form-control datepicker" onchange="date_changed(event);" />
                 </div>
                 <div class="input-group" id="signed_in">
                     <p>Select the time of your reservation</p>
-                    <input id="time_choice" type="time" class="form-control" min="10:00" max="21:30" step="00:30" />
+                    <input id="time_choice" type="time" class="form-control" min="10:00" max="21:30" step="30m" />
                     <button class="btn btn-primary btn-block" onclick="reserve();">Make Reservation</button>
                 </div>
                 <div class="input-group" id="signed_out">
@@ -155,7 +155,7 @@ function reserve() {
     let usr = get_user();
     let name = usr["full_name"];
     let selected_time = $("#time_choice").val();
-    if(!selected_time) {
+    if(!selected_time || !$("#date_choice").val()) {
         alert("Please select the time of your reservation", selected_time);
         return;
     }

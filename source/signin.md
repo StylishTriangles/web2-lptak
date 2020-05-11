@@ -19,7 +19,7 @@ permalink: /signin/
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input name="password" class="form-control" placeholder="Password" type="password">
+        <input id="password" name="password" class="form-control" placeholder="Password" type="password">
     </div> <!-- form-group// -->                                      
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Sign in </button>
@@ -36,10 +36,13 @@ $("#signin").submit(function(event){
     if (usr === undefined) {
         alert("User does not exist!");
     } else if (usr.email != $("input#email").val()) {
-        alert("User not found in database!")
+        alert("User not found in database!");
+    } else if(usr.password != $("input#password").val()) {
+        alert("Invalid password!");
     } else {
         Cookies.set("auth", "1");
-        alert("You are now logged in!");
+        alert("You are now logged in!\n");
+        document.location.href = "{{ "/reservations/" | relative_url }}";
     }
 });
 </script>

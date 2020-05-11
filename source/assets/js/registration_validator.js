@@ -62,7 +62,7 @@ $(function() {
             // Here we would want an AJAX submit
             var obj = serializeJSON(submitted_form);
             Cookies.set("user", obj);
-            alert("You have successfully registered!");
+            alert("You have successfully registered!\nYou can now sign in!");
         }
     });
 });
