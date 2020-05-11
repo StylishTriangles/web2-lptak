@@ -10,7 +10,8 @@
     </button>
 
     {%- if page_paths -%}
-        <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
         <!-- <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -28,7 +29,8 @@
                 </li>
               {%- endif -%}
             {%- endfor -%}
-      </ul>
+       </ul>
+      </div>
     {%- endif -%}
   <!-- </div> -->
   </nav>
